@@ -1,13 +1,18 @@
-![](title.png)
-
----
-
 # Learning to think about abstractions
 
 ![right, filtered](sink.jpg)
 
 ^
 - [Blog post](https://www.hanselman.com/blog/PleaseLearnToThinkAboutAbstractions.aspx) by Scott Hanselman
+  * Jeff Atwood wrote a post called Please Don't Learn to Code and Zed Shaw wrote a post called Please Don't Become Anything, Especially Not A Programmer.
+  My wife lost her wedding ring down the drain. She freaked out and came running declaring that it was lost. Should we call a plumber?
+  I am not a plumber and I have no interest in being a plumber. While I advocate that folks try to be handy around the house, I choose to put a limit on how much I know about plumbing.
+  While my wife has an advanced degree in something I don't understand, she also, is not a plumber. As a user of plumbing she has an understandably narrow view of how it works. She turns on the water, a miracle happens, and water comes out of the tap. That water travels about 8 inches and then disappears into the drain never to be seen again. It's the mystery of plumbing as far as she is concerned.
+  I, on the other hand, have nearly double the understanding of plumbing, as my advanced knowledge extends to the curvey pipey thing under the sink. I think that's the technical term for it. After the curvey pipey thing the series of tubes goes into the wall, and that's where my knowledge ends.
+  Everything is a layer of abstraction over something else. I push a button on my Prius and the car starts. No need even for a key in the ignition. A hundred plus years of internal combustion abstracted away to a simple push button.
+  Jeff said: Please don't advocate learning to code just for the sake of learning how to code.
+  Zed says: Never listen to people who try to make beginners feel like losers.
+  I think everyone should learn how to think and when to dig deeper and should be able to do it in a welcoming and friendly environment.
 - Git initially created as a toolkit to build version control systems
 - There are low-level plumbing commands as well as the porcelain commands that we're used to
 - Today we will expand our understanding of the plumbing
@@ -29,6 +34,10 @@
 - **Q:** asks a question for you to answer. Write down your answer
 - **REC:** indicates to copy some value to a text editor
 - `echo`, `cat`, `find` are vanilla Unix commands
+
+^
+- For the DOs please make sure to type exactly as written including control characters, except for the <...> placeholders
+- For the RECs copy the value as well as a label for you to recall what it was from
 
 ---
 
@@ -107,8 +116,8 @@ Sketch out your current mental model of the object store
 - **DO:** Make a tree pointing to the previous tree
   `echo -en "040000 tree <tree hash>\t<tree name>" | git mktree`
 - **REC:** The two tree hashes that were returned
-- **DO:** Inspect the object types and values
- `git cat-file -t <tree hash>; git cat-file -p <tree hash>`
+- **DO:** Inspect the object types and values of these trees
+ `git cat-file -t <hash>; git cat-file -p <hash>`
 
 ---
 
@@ -467,7 +476,7 @@ Sketch out your current mental model of how the object store, index and working 
 | `checkout` | | ☑️ | | ☑️ | ☑️ |
 | `reset --soft` | | | ☑️ | | |
 | `reset --mixed` | | | ☑️ | ☑️ | |
-| `reset --hard` | | ☑️ | ☑️ | ☑️ | ☑️ |
+| `reset --hard` | | | ☑️ | ☑️ | ☑️ |
 
 ---
 
@@ -496,3 +505,9 @@ Sketch out your current mental model of how the object store, index and working 
 # Was our ring ever really lost?
 
 ![right, filtered](ring.jpg)
+
+^
+- Back to Hanselman blog post:
+  * Learn how to question how things work. Learn that everything new and simple hides something large and complex. We are all standing on the shoulders of giants like Newton, Tesla, Kettering, Berners-Lee, and on and on.
+  You can choose to live in a world where things just work, or you can choose to dig a little. You don't need to learn to code, you don't need to be an expert in everything but know that you can learn. You can learn a little or a lot. I don't think the Mayor of New York  needs to know how to code, but it'd be nice if he knew a little about DNS and a little about HTTP.
+  I opened the trap under the sink and retrieved the ring. She was thrilled. "I never knew that was under there." Now she does and now we both know a little about plumbing and abstractions. And that's a good thing.

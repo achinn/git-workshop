@@ -91,8 +91,8 @@ Sketch out your current mental model of the object store
 - **DO:** Make a tree pointing to the previous tree
   `echo -en "040000 tree <tree hash>\t<tree name>" | git mktree`
 - **REC:** The two tree hashes that were returned
-- **DO:** Inspect the object types and values
- `git cat-file -t <tree hash>; git cat-file -p <tree hash>`
+- **DO:** Inspect the object types and values of these trees
+ `git cat-file -t <hash>; git cat-file -p <hash>`
 
 ---
 
