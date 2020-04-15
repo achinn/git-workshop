@@ -92,7 +92,7 @@ Sketch out your current mental model of the object store
   `echo -en "040000 tree <tree hash>\t<tree name>" | git mktree`
 - **REC:** The two tree hashes that were returned
 - **DO:** Inspect the object types and values of these trees
- `git cat-file -t <hash>; git cat-file -p <hash>`
+ `git cat-file -t <tree hash>; git cat-file -p <tree hash>`
 
 ---
 
