@@ -306,6 +306,10 @@ Sketch out your current mental model of the object store
 
 ---
 
+# ✋ Stop and synchronize with the rest of the group 🛑
+
+---
+
 # The index
 
 - The index keeps track of files related to the current commit
