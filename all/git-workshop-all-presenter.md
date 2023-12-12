@@ -25,6 +25,10 @@
 2. How do do we track things in the object store?
 3. What is the Git index and how does it interact with the object store?
 
+^
+- Please start with a blank slate in your mind as we'll be going over low-level concepts that may not seem relevant.
+- Keep with it. We will slowly add layers to bring it back to what we know in day-to-day Git usage.
+
 ---
 
 # Logistics
@@ -328,6 +332,10 @@ Sketch out your current mental model of the object store
   `git update-index --add --cacheinfo 100644,<blob hash>,test.txt`
   Note: there are no spaces between the commas
 - **Q:** Now what does `git status` show?
+
+---
+
+# ✋ Stop and synchronize with the rest of the group 🛑
 
 ---
 
