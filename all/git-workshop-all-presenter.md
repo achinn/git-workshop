@@ -28,6 +28,8 @@
 ^
 - Please start with a blank slate in your mind as we'll be going over low-level concepts that may not seem relevant.
 - Keep with it. We will slowly add layers to bring it back to what we know in day-to-day Git usage.
+- There will be points where you're asked to sketch out your mental model. Don't spend too much time on this -- perhaps five minutes.
+- When you see the "Stop" slide, please re-join the main call.
 
 ---
 
