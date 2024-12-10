@@ -117,13 +117,23 @@ Sketch out your current mental model of the object store
 
 # Writing trees
 
-- **DO:** Make another blob. Then make a tree pointing to both blobs
+- **DO:** Make another blob
+  `echo -n "<different file contents>" | git hash-object -w --stdin`
+- **DO:** Then make a tree pointing to both blobs
   `echo -en "100644 blob <hash1>\t<name1>\n100644 blob <hash2>\t<name2>" | git mktree`
+- **REC:** The tree hash that was returned
+
+---
+
+# Writing trees
+
 - **DO:** Make a tree pointing to the previous tree
   `echo -en "040000 tree <tree hash>\t<tree name>" | git mktree`
-- **REC:** The two tree hashes that were returned
-- **DO:** Inspect the object types and values of these trees
- `git cat-file -t <tree hash>; git cat-file -p <tree hash>`
+- **REC:** The tree hash that was returned
+- **DO:** Inspect the object types of these trees you created
+ `git cat-file -t <tree hash>`
+- **DO:** Inspect the values of these trees you created
+ `git cat-file -p <tree hash>`
 
 ---
 
@@ -253,8 +263,14 @@ Sketch out your current mental model of the object store
 - A reference can be used in the place of a commit hash
 - **DO:** Create a new commit using your reference as a parent
   `echo "<desc>" | git commit-tree -p <ref> <tree hash>`
+- **REC:** The commit hash that was returned
 - **DO:** What is the reference pointing to?
   `git log <ref>`
+
+---
+
+# Using references
+
 - **DO:** Update your reference to point to the new commit
   `git update-ref refs/heads/<ref> <newest commit hash>`
 - **DO:** Now what is the reference pointing to?
@@ -346,9 +362,14 @@ Sketch out your current mental model of the object store
 - The index keeps track of files related to the current commit
 - The index also keeps track of changes to files you want to eventually commit
 - We've been going _around_ the index, straight to the object store
+
+---
+
+# The index
+
 - Normally you'd update the object store _through_ the index
 - `git update-index` updated the index to match what `HEAD` sees
-- **DO:** It's a binary file at `.git/index`. Inspect with
+- **DO:** It's a binary file at `.git/index`. Inspect it with
   `git ls-files -s`
 
 ---
@@ -363,12 +384,17 @@ Sketch out your current mental model of how the object store, index and working 
   `echo "test2" > test2.txt && git add test2.txt`
 - **Q:** What does the index look like after?
   `git ls-files -s`
-- **Q:** What does the object store look like w.r.t. the new file?
+- **Q:** What does the object store look like with respect to the new file?
   `find .git/objects -type f`
+
+---
+
+# Using the index
+
 - **DO:** Create a commit for the current changes
   `git commit -m "Added test2.txt"`
 - **Q:** What does the object store look like now?
-
+  `find .git/objects -type f`
 
 ---
 
@@ -377,19 +403,26 @@ Sketch out your current mental model of how the object store, index and working 
 - **DO:** Perform a checkout of the previous commit
   `git checkout HEAD~`
 - **Q:** What does the message say?
+
+---
+
+# HEAD -> Index -> Working directory (checkout)
+
 - **Q:** What does the symbolic ref look like?
   `cat .git/HEAD`
 - **Q:** What does your reference look like?
   `git show-ref`
-- **Q:** What do the index and working directory look like?
-  `git ls-files -s` and `ls`
+- **Q:** What does the index look like?
+  `git ls-files -s`
+- **Q:** What does working directory look like?
+  `ls`
 
 ---
 
 # Remember those hashes
 
 - **DO:** Set the symbolic ref back
-  `git checkout <your reference name>`
+  `git checkout my-branch`
 - **REC:** The commit hashes from `git log`. We'll need these for later
 
 ---
@@ -401,7 +434,8 @@ Sketch out your current mental model of how the object store, index and working 
 - **Q:** What do the symbolic ref and your reference look like?
   `git log`
 - **Q:** What do the index and working directory look like?
-  `git ls-files -s` and `ls`
+  `git ls-files -s`
+  `ls`
 
 ^
 - `reset` dereferences `HEAD` and updates what that reference points to
@@ -468,7 +502,7 @@ Sketch out your current mental model of how the object store, index and working 
 
 # Recap
 
-- **DO:** Indicate the levels of change for the various commands
+- **DO:** Indicate what changes for the various commands
   - `add` combined with `commit` has been done for you
 
 |   | Object store | HEAD | Reference | Index | Working dir |
@@ -507,6 +541,7 @@ Sketch out your current mental model of how the object store, index and working 
   rm -rf .git/logs/
   git reflog
   ```
+- Do we have to inspect every object in the object store?
 - **DO:** We can still locate orphaned objects in the object store
   `git fsck --full`
 
